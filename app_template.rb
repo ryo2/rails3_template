@@ -75,13 +75,15 @@ end
 # Bundle install
 #-----------------------------------------
 
-run "bundle install"
+#run "bundle install"
 
 
 # Configuration
 #-----------------------------------------
 
 remove_file "public/index.html"
+remove_file ".gitignore"
+get "#{repo_url}/.gitignore", '.gitignore'
 
 # timzone setting
 
