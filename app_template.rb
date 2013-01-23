@@ -19,10 +19,18 @@ if gems[:mysql]
 end
 
 if yes?("Would you like to use heroku?")
+
+  gsub_file "Gemfile", /gem 'sqlite3'/, ""
+
   gem_group :production do
     gem 'pg'
   end
+
+  gem_group :test do
+    gem 'sqlite3'
+  end
 end
+
 
 # soft delete
 gem 'permanent_records'
@@ -53,6 +61,22 @@ gem 'rails_config'
 # pagination
 gem 'kaminari'
 
+
+# Test by rspec
+if yes?("Would you use rspec to test this app?")
+  gem_group :test, :development do
+    gem "rspec-rails", "~> 2.0"
+    gem 'spork', '~> 0.9.0.rc'
+    gem 'factory_girl_rails'
+end
+
+  gem_group :development do
+    gem 'guard'
+    gem 'guard-rspec'
+    gem 'guard-spork'
+    gem 'rb-fsevent', '~> 0.9.1'
+  end
+end
 
 ## Utility
 
