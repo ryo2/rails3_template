@@ -68,9 +68,7 @@ if yes?("Would you use rspec to test this app?")
     gem "rspec-rails", "~> 2.0"
     gem 'spork', '~> 0.9.0.rc'
     gem 'factory_girl_rails'
-end
-
-  gem_group :development do
+    gem 'capybara'
     gem 'guard'
     gem 'guard-rspec'
     gem 'guard-spork'
